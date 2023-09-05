@@ -30,7 +30,7 @@ public class dataProvider {
 		
 		int row = testData.size();
         int col = testData.get(0).size();
-        Object[][] obj = new Object[row][col-3];
+        Object[][] obj = new Object[row][col-2];
 
 		int i=0;
 		for(HashMap<String, String> map:testData) {
@@ -55,7 +55,7 @@ public class dataProvider {
 		
 		int row = testData.size();
         int col = testData.get(0).size();
-        Object[][] obj = new Object[row][col-1];
+        Object[][] obj = new Object[row][col];
 
 		int i=0;
 		for(HashMap<String, String> map:testData) {
@@ -81,7 +81,7 @@ public class dataProvider {
 		
 		int row = testData.size();
         int col = testData.get(0).size();
-        Object[][] obj = new Object[row][col-1];
+        Object[][] obj = new Object[row][col];
 
 		int i=0;
 		for(HashMap<String, String> map:testData) {
@@ -110,7 +110,7 @@ public class dataProvider {
 		
 		int row = testData.size();
         int col = testData.get(0).size();
-        Object[][] obj = new Object[row][col-1];
+        Object[][] obj = new Object[row][col];
 
 		int i=0;
 		for(HashMap<String, String> map:testData) {
@@ -136,7 +136,7 @@ public class dataProvider {
 		
 		int row = testData.size();
         int col = testData.get(0).size();
-        Object[][] obj = new Object[row][col-1];
+        Object[][] obj = new Object[row][col];
 
 		int i=0;
 		for(HashMap<String, String> map:testData) {
@@ -163,7 +163,7 @@ public class dataProvider {
 		
 		int row = testData.size();
         int col = testData.get(0).size();
-        Object[][] obj = new Object[row][col-1];
+        Object[][] obj = new Object[row][col];
 
 		int i=0;
 		for(HashMap<String, String> map:testData) {

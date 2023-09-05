@@ -22,7 +22,7 @@ import helperTestUtility.BrowserFactory;
 import helperTestUtility.DriverFactory;
 import helperTestUtility.RetryListerner;
 import pageObjectModels.LoginPage;
-import reportUtilities.ReportingUtility;
+import reportUtilities.MultiThreadedReportingUtility;
 import runner.TestNGSuite;
 import screenRecorderUtilities.ScreenRecorderUtil;
 import screenRecorderUtilities.ScreenRecorderUtil.TypeOfScreen;
@@ -32,8 +32,8 @@ import screenRecorderUtilities.ScreenRecorderUtil.TypeOfScreen;
  * 
  * @author Niraj.Tiwari
  */
-@Listeners({RetryListerner.class, ReportingUtility.class})//MultiThreadedReportingUtility
-//@Listeners(ReportingUtility.class)
+@Listeners({RetryListerner.class, MultiThreadedReportingUtility.class})
+//@Listeners(MultiThreadedReportingUtility.class)
 public class BaseTest {
 
 	public static final Logger logger = LogManager.getLogger(BaseTest.class);

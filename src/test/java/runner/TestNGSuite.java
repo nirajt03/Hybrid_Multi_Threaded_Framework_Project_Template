@@ -21,7 +21,7 @@ import exceptions.InCorrectConfigConfigParameters;
 import exceptions.NoRowFoundException;
 import exceptions.ObjectLengthNotCorrectException;
 import helperTestUtility.RetryListerner;
-import reportUtilities.ReportingUtility;
+import reportUtilities.MultiThreadedReportingUtility;
 
 /**
  * Test NG Suite
@@ -67,15 +67,9 @@ public class TestNGSuite {
 		//Setting execution thread count for parallel execution
 		suiteName.setThreadCount(2);
 		
-		//Setting verbose count for console logs
-		suiteName.setVerbose(2); 
-
 		//Setting name for XML tests
 		XmlTest testName = new XmlTest(suiteName);
 		testName.setName("Pluralsight Test");
-
-		//Setting preserve order for XML tests to true --> to execute the test in required order
-		//testName.setPreserveOrder(true);
 
 		////Creating hashmap for setting Parameters for the XML Test
 		//HashMap<String , String> testNgParams = new HashMap<String, String>();
@@ -109,7 +103,7 @@ public class TestNGSuite {
 		testName.setXmlClasses(classList) ;
 
 		//Adding listners classes
-		listenerList.add(ReportingUtility.class);
+		listenerList.add(MultiThreadedReportingUtility.class);
 		listenerList.add(RetryListerner.class);
 		suiteList.add(suiteName);
 
