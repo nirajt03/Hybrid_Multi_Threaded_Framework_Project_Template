@@ -78,7 +78,7 @@ public class BaseTest {
 		}
 		//from test ng suite
 		//TestNg class's part - must set below properties
-		String  path = System.getProperty("user.dir") + "\\src\\test\\resources\\testdata\\hybridFrameworkTestDriver.xlsx";
+		String  path = System.getProperty("user.dir") + "\\src\\test\\resources\\testdata\\hybridMultiThreadedFrameworkTestDriver.xlsx";
 		try {
 			TestNGSuite.validateInputFile(path);
 		} catch (FileDoesNotExistsException e) {

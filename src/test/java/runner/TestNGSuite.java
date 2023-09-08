@@ -35,7 +35,7 @@ public class TestNGSuite {
 	public static void main(String[] args)  {
 
 		//Test driver excel sheet path
-		String  path = System.getProperty("user.dir") + "\\src\\test\\resources\\testdata\\hybridFrameworkTestDriver.xlsx";
+		String  path = System.getProperty("user.dir") + "\\src\\test\\resources\\testdata\\hybridMultiThreadedFrameworkTestDriver.xlsx";
 		logger.info("Excel sheet Path : " +path);
 		try {
 			validateInputFile(path);
