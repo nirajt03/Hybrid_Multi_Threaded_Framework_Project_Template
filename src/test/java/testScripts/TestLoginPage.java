@@ -28,7 +28,7 @@ public class TestLoginPage extends BaseTest{
 	 * Verify Login for all roles
 	 */
 	@FrameworkAnnotation(author = "Niraj", category = {CategoryType.SMOKE, CategoryType.NAVIGATION}, description = "Test Login Page")
-	@Test(dataProvider = "LoginData",retryAnalyzer = RetryAnalyzer.class,dataProviderClass = dataProvider.class,groups= {"TestLoginPage","Regression","Smoke"})
+	@Test(priority = 1,dataProvider = "LoginData",retryAnalyzer = RetryAnalyzer.class,dataProviderClass = dataProvider.class,groups= {"TestLoginPage","Regression","Smoke"})
 	public void verifyLoginFunctionality(String userType,String testCaseID,String loginType,String expSearchText,String manualTCIDs) {
 		ReportLogs.addLog(Status.INFO,"TestScript : Running -> verify Login Functionality");
 

@@ -33,7 +33,7 @@ public class TestJavaSearchFunctionality extends BaseTest{
 	 * Verify Java Search Functionality
 	 */
 	@FrameworkAnnotation(author = "Niraj", category = {CategoryType.SANITY, CategoryType.NAVIGATION}, description = "Test Java Search Functionality")
-	@Test(dataProvider = "JavaSearchFunctionality",retryAnalyzer = RetryAnalyzer.class, dataProviderClass = dataProvider.class,groups= {"TestJavaSearchFunctionality","Regression","Smoke"})
+	@Test(priority = 6,dataProvider = "JavaSearchFunctionality",retryAnalyzer = RetryAnalyzer.class, dataProviderClass = dataProvider.class,groups= {"TestJavaSearchFunctionality","Regression","Smoke"})
 	public void verifyJavaSearchFunctionality(String userType,String testCaseID,String loginType,String courseName,String expCourseHeaderText,String expCourseDescriptionText,String manualTCIDs) {
 		ReportLogs.addLog(Status.INFO,"TestScript : Running -> Verify Java Search Functionality");
 

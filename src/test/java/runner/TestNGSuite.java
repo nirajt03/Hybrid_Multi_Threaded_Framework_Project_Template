@@ -60,8 +60,8 @@ public class TestNGSuite {
 		XmlSuite suiteName = new XmlSuite();
 		suiteName.setName("Pluralsight Suite");
 
-		//Setting XML suite parallel execution mode as classes/methods
-		suiteName.setParallel(XmlSuite.ParallelMode.METHODS);
+		//Setting XML suite parallel execution mode as classes/methods/tests
+		suiteName.setParallel(XmlSuite.ParallelMode.CLASSES);
 				
 		//Setting execution thread count for parallel execution
 		suiteName.setThreadCount(2);

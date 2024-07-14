@@ -35,7 +35,7 @@ public class TestSearchPageFeatures extends BaseTest{
 	 * Verify Search Page Features
 	 */
 	@FrameworkAnnotation(author = "Niraj", category = {CategoryType.SANITY, CategoryType.SMOKE, CategoryType.NAVIGATION}, description = "Test Search Page Features")
-	@Test(dataProvider = "SearchPageFeatures",retryAnalyzer = RetryAnalyzer.class, dataProviderClass = dataProvider.class,groups= {"TestSearchPageFeatures","Regression","Smoke"})
+	@Test(priority = 4,dataProvider = "SearchPageFeatures",retryAnalyzer = RetryAnalyzer.class, dataProviderClass = dataProvider.class,groups= {"TestSearchPageFeatures","Regression","Smoke"})
 	public void verifySearchPageFeatures(String userType,String testCaseID,String loginType,String courseName,String manualTCIDs) {
 		ReportLogs.addLog(Status.INFO,"TestScript : Running -> Verify Search Page Features");
 

@@ -13,32 +13,32 @@ public class DriverFactory {
 	
 	private static DriverFactory instance;
 	
-	public static DriverFactory getInstance() {
-		if(instance == null) {
-			instance = new DriverFactory();
-		}
-		return instance;
-	}
-	
-//	synchronized public static DriverFactory getInstance() { // thread safe initialization
+//	public static DriverFactory getInstance() {
 //		if(instance == null) {
 //			instance = new DriverFactory();
 //		}
-//		return instance; 
+//		return instance;
 //	}
+	
+	synchronized public static DriverFactory getInstance() { // thread safe initialization
+		if(instance == null) {
+			instance = new DriverFactory();
+		}
+		return instance; 
+	}
 	
 	//factory design pattern - define separate factory methods for creating objects & create objects by calling that methods
 	public ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 	
-	public WebDriver getDriver() {
+	public synchronized WebDriver getDriver() {
 		return tlDriver.get();
 	}
 	
-	public void setDriver(WebDriver driverParam) {
+	public synchronized void setDriver(WebDriver driverParam) {
 		tlDriver.set(driverParam);
 	}
 	
-	public void closeDriver() {
+	public synchronized void closeDriver() {
 		tlDriver.get().quit();
 		tlDriver.remove();
 	}

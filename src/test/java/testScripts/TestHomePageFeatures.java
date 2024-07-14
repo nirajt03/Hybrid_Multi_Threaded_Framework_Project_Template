@@ -29,7 +29,7 @@ public class TestHomePageFeatures extends BaseTest{
 	 * Verify Home Page Features
 	 */
 	@FrameworkAnnotation(author = "Niraj", category = {CategoryType.SANITY, CategoryType.SMOKE, CategoryType.REGRESSION}, description = "Test Home Page Features")
-	@Test(dataProvider = "HomePageFeatures",retryAnalyzer = RetryAnalyzer.class, dataProviderClass = dataProvider.class,groups= {"TestHomePageFeatures","Regression","Smoke"})
+	@Test(priority = 3,dataProvider = "HomePageFeatures",retryAnalyzer = RetryAnalyzer.class, dataProviderClass = dataProvider.class,groups= {"TestHomePageFeatures","Regression","Smoke"})
 	public void verifyHomePageFeatures(String userType,String testCaseID,String loginType,String expHomePageHeader,String expHomePageDesc,String manualTCIDs) {
 		ReportLogs.addLog(Status.INFO,"TestScript : Running -> Verify Home Page Features");
 

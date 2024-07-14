@@ -47,7 +47,7 @@ public class BaseTest {
 
 	protected BrowserFactory bf = new BrowserFactory();
 	static Set<String> manualTCIDsSet = new TreeSet<String>();
-	protected WebDriver driver;
+	private WebDriver driver;
 	ChromeOptions options;
 
 	String path= System.getProperty("testScriptName");
@@ -127,6 +127,13 @@ public class BaseTest {
 
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass(ITestContext testcontext) {
+		if(driver == null) {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		DriverFactory.getInstance().setDriver(bf.createBrowserInstance("Chrome"));
 		driver = DriverFactory.getInstance().getDriver();
 		testcontext.setAttribute("driver", driver);

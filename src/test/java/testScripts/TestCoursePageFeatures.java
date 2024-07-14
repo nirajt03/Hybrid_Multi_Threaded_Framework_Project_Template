@@ -29,7 +29,7 @@ public class TestCoursePageFeatures extends BaseTest{
 	 * Verify Course Page Features
 	 */
 	@FrameworkAnnotation(author = "Niraj", category = {CategoryType.REGRESSION, CategoryType.SMOKE}, description = "Test Course Page Features")
-	@Test(dataProvider = "CoursePageFeatures",retryAnalyzer = RetryAnalyzer.class,dataProviderClass = dataProvider.class,groups= {"TestCoursePageFeatures","Regression","Smoke"})
+	@Test(priority = 5,dataProvider = "CoursePageFeatures",retryAnalyzer = RetryAnalyzer.class,dataProviderClass = dataProvider.class,groups= {"TestCoursePageFeatures","Regression","Smoke"})
 	public void verifyCoursePageFeatures(String userType,String testCaseID,String loginType,String courseName,String expCourseHeaderText, 
 			String expCourseDescriptionText,String expFreeTrailButtonText, String expCourseOverviewText,String manualTCIDs) {
 

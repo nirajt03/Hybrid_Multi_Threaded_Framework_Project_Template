@@ -27,7 +27,8 @@ public class TestLoginPageNegativeScenarios extends BaseTest{
 	 * Verify Login Page Negative Scenarios
 	 */
 	@FrameworkAnnotation(author = "Niraj", category = {CategoryType.SANITY, CategoryType.SMOKE, CategoryType.NAVIGATION}, description = "Test Login Page Negative Scenarios")
-	@Test(dataProvider = "NegativeLoginScenarios", retryAnalyzer = RetryAnalyzer.class, dataProviderClass = dataProvider.class,groups= {"TestLoginPageNegativeScenarios","Regression","Smoke"})
+	@Test(priority = 2,dataProvider = "NegativeLoginScenarios", retryAnalyzer = RetryAnalyzer.class, dataProviderClass = dataProvider.class,groups= {"TestLoginPageNegativeScenarios","Regression","Smoke"},
+	dependsOnMethods = {"verifyLoginFunctionality"})
 	public void verifyLoginPageNegativeScenarios(String userType,String testCaseID,String username,String password,String expErrorMessage,String manualTCIDs) {
 		ReportLogs.addLog(Status.INFO,"TestScript : Running -> verify Login Page Negative Scenarios");
 
