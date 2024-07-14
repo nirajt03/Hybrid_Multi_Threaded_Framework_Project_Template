@@ -9,7 +9,7 @@ import helperUtility.EncryptDecrypt;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import webElementUtilities.WebElementUtlities;
+import webElementUtilities.WebElementUtility;
 
 /**
  * Login Page
@@ -40,7 +40,7 @@ public class LoginPage extends BasePage{
 	public SearchPage pluralsightApplicationLogin(String username, String password) { //<T extends BasePage>T
 
 		// Wait till the login page is visible
-		WebElementUtlities.explicitWaitForElementToBeVisible(driver,loginForm);
+		WebElementUtility.explicitWaitForElementToBeVisible(driver,loginForm);
 
 		//Decrpyt & Enter Username 
 		enterUsername(EncryptDecrypt.decryptString(username));
@@ -72,7 +72,7 @@ public class LoginPage extends BasePage{
 		refreshPage();
 
 		// Wait till the login page is visible
-		WebElementUtlities.explicitWaitForElementToBeVisible(driver,loginForm);
+		WebElementUtility.explicitWaitForElementToBeVisible(driver,loginForm);
 
 		// Enter User name
 		enterUsername(username);
@@ -98,8 +98,8 @@ public class LoginPage extends BasePage{
 	 */
 	public boolean checkHeaderRibbonIsVisible() {
 		boolean flag = false;
-		WebElementUtlities.explicitWaitForElementToBeVisible(driver, headerRibbonTextVisible, 15);
-		if(!WebElementUtlities.isElementVisible(driver, headerRibbonTextVisible)) {
+		WebElementUtility.explicitWaitForElementToBeVisible(driver, headerRibbonTextVisible, 15);
+		if(!WebElementUtility.isElementVisible(driver, headerRibbonTextVisible)) {
 			throw new ElementNotInteractableException("Header message is not visible");	
 		}
 		flag=true;		
@@ -112,7 +112,7 @@ public class LoginPage extends BasePage{
 	 */
 	public String getHeaderRibbonText() {
 		checkHeaderRibbonIsVisible();		
-		return WebElementUtlities.getText(driver, driver.findElement(headerRibbonTextVisible));
+		return WebElementUtility.getText(driver, driver.findElement(headerRibbonTextVisible));
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class LoginPage extends BasePage{
 		boolean flag = false;
 		if(getHeaderRibbonText().equalsIgnoreCase("Invalid user name or password")) {
 			flag=true;
-			WebElementUtlities.explicitWaitForElementToBeInVisible(driver, headerRibbonTextVisible, 10);
+			WebElementUtility.explicitWaitForElementToBeInVisible(driver, headerRibbonTextVisible, 10);
 		}
 		return flag;
 	}
@@ -133,9 +133,9 @@ public class LoginPage extends BasePage{
 	 * @param userName
 	 */
 	public void enterUsername(String userName) {
-		WebElementUtlities.explicitWaitForElementToBeVisible(driver, usernameBy, 10);
-		WebElementUtlities.clearText(driver, driver.findElement(usernameBy));
-		WebElementUtlities.setText(driver,driver.findElement(usernameBy),userName);
+		WebElementUtility.explicitWaitForElementToBeVisible(driver, usernameBy, 10);
+		WebElementUtility.clearText(driver, driver.findElement(usernameBy));
+		WebElementUtility.setText(driver,driver.findElement(usernameBy),userName);
 	}
 
 	/**
@@ -143,16 +143,16 @@ public class LoginPage extends BasePage{
 	 * @param password
 	 */
 	public void enterPassword(String pwd) {
-		WebElementUtlities.explicitWaitForElementToBeVisible(driver, passwordBy, 10);
-		WebElementUtlities.clearText(driver, driver.findElement(passwordBy));
-		WebElementUtlities.setText(driver, driver.findElement(passwordBy), pwd);
+		WebElementUtility.explicitWaitForElementToBeVisible(driver, passwordBy, 10);
+		WebElementUtility.clearText(driver, driver.findElement(passwordBy));
+		WebElementUtility.setText(driver, driver.findElement(passwordBy), pwd);
 	}
 
 	/**
 	 * Click on Login
 	 */
 	public void clickLogin() {
-		WebElementUtlities.click(driver, driver.findElement(loginBtnBy));
+		WebElementUtility.click(driver, driver.findElement(loginBtnBy));
 	}
 
 }

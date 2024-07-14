@@ -1,5 +1,9 @@
 package commonUtility;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -12,20 +16,23 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 
-import excelUtilities.ExcelUtilities;
+import annotations.FrameworkAnnotation;
+import excelUtilities.ExcelUtility;
 import exceptions.FileDoesNotExistsException;
 import exceptions.InCorrectConfigConfigParameters;
 import helperTestUtility.BrowserFactory;
 import helperTestUtility.DriverFactory;
+import helperTestUtility.ReportLogs;
 import helperTestUtility.RetryListerner;
 import pageObjectModels.LoginPage;
 import reportUtilities.MultiThreadedReportingUtility;
 import runner.TestNGSuite;
-import screenRecorderUtilities.ScreenRecorderUtil;
-import screenRecorderUtilities.ScreenRecorderUtil.TypeOfScreen;
+import screenRecorderUtilities.ScreenRecorderUtility;
+import screenRecorderUtilities.ScreenRecorderUtility.TypeOfScreen;
 
 /**
  * Base Test
@@ -39,6 +46,7 @@ public class BaseTest {
 	public static final Logger logger = LogManager.getLogger(BaseTest.class);
 
 	protected BrowserFactory bf = new BrowserFactory();
+	static Set<String> manualTCIDsSet = new TreeSet<String>();
 	protected WebDriver driver;
 	ChromeOptions options;
 
@@ -70,8 +78,8 @@ public class BaseTest {
 		int thresholdDays = 10;
 		String testClassName = getClassName();
 		try {
-			ScreenRecorderUtil.startRecord(TypeOfScreen.RegularScreen,testClassName);
-			ScreenRecorderUtil.deleteOlderFilesAndDirectories(thresholdDays, TimeUnit.DAYS,".avi");			
+			ScreenRecorderUtility.startRecord(TypeOfScreen.RegularScreen,testClassName);
+			ScreenRecorderUtility.deleteOlderFilesAndDirectories(thresholdDays, TimeUnit.DAYS,".avi");			
 			logger.info("Screen Recording Started ..!!");
 		} catch (Exception e) {
 			e.printStackTrace();	
@@ -125,10 +133,29 @@ public class BaseTest {
 		logger.info("Chrome Browser Initiated successfully");
 	}
 
+	@BeforeMethod(alwaysRun=true)
+	public void beforeMethod(Object[] data) {
+		List<Object> myModel = Arrays.asList(data);
+		int lastIndex = myModel.size()-1;
+		Object object = myModel.get(lastIndex);
+		if (object.toString().contains("TCs") ) {
+			String[] objectArr = object.toString().split(",");
+			for (String obj : objectArr) {
+				manualTCIDsSet.add(obj.trim());
+			}
+		}
+		logger.info("Manual TC IDs for current test : "+manualTCIDsSet);
+	}
+
 	@AfterMethod(alwaysRun=true)
 	public void afterMethod(ITestResult result) {
-		testScriptName = result.getMethod().getMethodName();
-		System.setProperty("testScriptName", testScriptName);
+
+		ReportLogs.addAuthors(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).author());
+		ReportLogs.addCategories(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).category());
+
+		//testScriptName = result.getMethod().getMethodName();
+		//testScriptName = result.getMethod().getRealClass().getSimpleName();
+		//System.setProperty("testScriptName", testScriptName);
 		try {
 			if (result.getStatus() == ITestResult.SUCCESS) {
 				++passedTests;
@@ -144,9 +171,14 @@ public class BaseTest {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
+		ReportLogs.unloadExtent();
+
+		int manualTCIDs = manualTCIDsSet.size();
+		System.setProperty("Manual TC IDs Count",String.valueOf(manualTCIDs));
+		logger.info("Manual TC IDs Count for current test : "+manualTCIDs);
 		try {
-			int totalTestCases = ExcelUtilities.getTotalTestCases(passedTests,failedTests,skipedTests);
-			double passPercentage = ExcelUtilities.calculatePercentage(passedTests,totalTestCases);
+			int totalTestCases = ExcelUtility.getTotalTestCases(passedTests,failedTests,skipedTests);
+			double passPercentage = ExcelUtility.calculatePercentage(passedTests,totalTestCases);
 			logger.info("Pass Percentage : "+passPercentage+" %");
 		} catch (Exception e) {
 			System.out.println(e.getCause());
@@ -160,7 +192,7 @@ public class BaseTest {
 	@AfterSuite(alwaysRun=true)
 	public void afterSuite() {
 		try {
-			ScreenRecorderUtil.stopRecord();
+			ScreenRecorderUtility.stopRecord();
 			logger.info("Screen Recording Stopped ..!!");
 		} catch (Exception e) {
 			e.printStackTrace();

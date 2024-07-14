@@ -26,7 +26,7 @@ public class dataProvider {
 	@DataProvider(name = "LoginData")
 	public Object[][] getLoginTestData() {
 
-		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("verifyLoginFunctionality");
+		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("TestLoginPage");
 		
 		int row = testData.size();
         int col = testData.get(0).size();
@@ -38,7 +38,7 @@ public class dataProvider {
 			obj[i][1]=map.get("TestCaseID");
 			obj[i][2]=map.get("LoginType");
 			obj[i][3]=map.get("ExpSearchText");
-			
+			obj[i][4]=map.get("ManualTCIDs");
 			i++;
 		}
 		return obj;
@@ -51,7 +51,7 @@ public class dataProvider {
 	@DataProvider(name = "NegativeLoginScenarios")
 	public Object[][] getNegativeLoginScenariosData() {
 
-		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("verifyLoginPageNegativeScenarios");
+		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("TestLoginPageNegativeScenarios");
 		
 		int row = testData.size();
         int col = testData.get(0).size();
@@ -64,7 +64,7 @@ public class dataProvider {
 			obj[i][2]=map.get("Username");
 			obj[i][3]=map.get("Password");
 			obj[i][4]=map.get("ExpErrorMessage");
-			
+			obj[i][5]=map.get("ManualTCIDs");
 			i++;
 		}
 		return obj;
@@ -77,7 +77,7 @@ public class dataProvider {
 	@DataProvider(name = "CoursePageFeatures")
 	public Object[][] getCoursePageFeaturesData() {
 
-		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("verifyCoursePageFeatures");
+		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("TestCoursePageFeatures");
 		
 		int row = testData.size();
         int col = testData.get(0).size();
@@ -93,7 +93,7 @@ public class dataProvider {
 			obj[i][5]=map.get("ExpCourseDescriptionText");
 			obj[i][6]=map.get("ExpFreeTrailText");
 			obj[i][7]=map.get("ExpCourseOverviewText");
-			
+			obj[i][8]=map.get("ManualTCIDs");
 			i++;
 		}
 		return obj;
@@ -106,7 +106,7 @@ public class dataProvider {
 	@DataProvider(name = "HomePageFeatures")
 	public Object[][] getHomePageFeaturesData() {
 
-		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("verifyHomePageFeatures");
+		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("TestHomePageFeatures");
 		
 		int row = testData.size();
         int col = testData.get(0).size();
@@ -119,7 +119,7 @@ public class dataProvider {
 			obj[i][2]=map.get("LoginType");
 			obj[i][3]=map.get("ExpHomePageHeader");
 			obj[i][4]=map.get("ExpHomePageDesc");
-			
+			obj[i][5]=map.get("ManualTCIDs");
 			i++;
 		}
 		return obj;
@@ -132,7 +132,7 @@ public class dataProvider {
 	@DataProvider(name = "JavaSearchFunctionality")
 	public Object[][] getJavaSearchFunctionalityData() {
 
-		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("verifyJavaSearchFunctionality");
+		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("TestJavaSearchFunctionality");
 		
 		int row = testData.size();
         int col = testData.get(0).size();
@@ -146,7 +146,7 @@ public class dataProvider {
 			obj[i][3]=map.get("CourseName");
 			obj[i][4]=map.get("ExpCourseHeaderText");
 			obj[i][5]=map.get("ExpCourseDescriptionText");
-			
+			obj[i][6]=map.get("ManualTCIDs");
 			i++;
 		}
 		return obj;
@@ -159,7 +159,7 @@ public class dataProvider {
 	@DataProvider(name = "SearchPageFeatures")
 	public Object[][] getSearchPageFeaturesData() {
 
-		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("verifySearchPageFeatures");
+		ArrayList<HashMap<String, String>> testData = archUtl.getTestData("TestSearchPageFeatures");
 		
 		int row = testData.size();
         int col = testData.get(0).size();
@@ -171,7 +171,7 @@ public class dataProvider {
 			obj[i][1]=map.get("TestCaseID");
 			obj[i][2]=map.get("LoginType");
 			obj[i][3]=map.get("CourseName");
-			
+			obj[i][4]=map.get("ManualTCIDs");
 			i++;
 		}
 		return obj;
