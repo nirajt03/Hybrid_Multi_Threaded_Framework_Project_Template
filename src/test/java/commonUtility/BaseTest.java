@@ -127,13 +127,6 @@ public class BaseTest {
 
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass(ITestContext testcontext) {
-		if(driver == null) {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
 		DriverFactory.getInstance().setDriver(bf.createBrowserInstance("Chrome"));
 		driver = DriverFactory.getInstance().getDriver();
 		testcontext.setAttribute("driver", driver);

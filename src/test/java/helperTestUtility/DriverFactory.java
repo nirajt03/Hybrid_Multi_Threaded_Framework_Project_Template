@@ -22,6 +22,11 @@ public class DriverFactory {
 	
 	synchronized public static DriverFactory getInstance() { // thread safe initialization
 		if(instance == null) {
+			try {
+				Thread.sleep(750);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			instance = new DriverFactory();
 		}
 		return instance; 
