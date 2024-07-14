@@ -23,7 +23,7 @@ public class BrowserFactory {
 			options.addArguments("start-maximized");
 			options.addArguments("--incognito");
 			options.addArguments("--remote-allow-origins=*");	
-			options.setBinary("116");
+			options.setBinary("126");
 			//options.setBrowserVersion("116");
 
 			//Map<String, Object> prefs = new HashMap<>();
@@ -33,7 +33,7 @@ public class BrowserFactory {
 			//prefs.put("profile.default_content_setting_values.media_stream_camera", 1);
 			//options.setExperimentalOption("prefs", prefs);
 
-			System.setProperty("webdriver.http.factory", "jdk-http-client");
+			//System.setProperty("webdriver.http.factory", "jdk-http-client");
 			driver = new ChromeDriver(options);
 		} else if (browser.equalsIgnoreCase("Firefox")) {
 			FirefoxOptions options = new FirefoxOptions();
