@@ -38,7 +38,7 @@ public class TestLoginPageNegativeScenarios extends BaseTest{
 
 		//Login to Pluralsight Application
 		String ribbonText = archUtil.checkNegativeLoginScenarios(loginPage, username, password);
-		ReportLogs.addLogForStringComparision(ribbonText, expErrorMessage,"Error Message Text");
+		ReportLogs.addLogForStringComparison(ribbonText, expErrorMessage,"Error Message Text");
 	    Assert.assertEquals(ribbonText, expErrorMessage,"Error Message Text is not equal");
 	    
 	    ReportLogs.addLogWithScreenshot(Status.INFO,"Verified Negative Login Scenarios");

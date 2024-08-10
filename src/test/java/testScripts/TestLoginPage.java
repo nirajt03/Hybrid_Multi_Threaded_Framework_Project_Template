@@ -42,7 +42,7 @@ public class TestLoginPage extends BaseTest{
 		
 		//assert validation
 		String actSearchBoxText = searchPage.getSearchPlaceholderText();
-		ReportLogs.addLogForStringComparision(actSearchBoxText, expSearchText,"Search Text Box Text");
+		ReportLogs.addLogForStringComparison(actSearchBoxText, expSearchText,"Search Text Box Text");
 		Assert.assertEquals(actSearchBoxText, expSearchText,"Search Text Box Text is not equal");
 		ReportLogs.addLogWithScreenshot(Status.INFO,"Verified login functionality");
 		//Assert.assertFalse(true);
