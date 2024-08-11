@@ -212,7 +212,6 @@ public class BaseTest {
 	@AfterSuite(alwaysRun=true)
 	public void afterSuite() {
 		try {
-			clearFile();
 			logTestExecutionStatusInTextFile(passedTCIDsSet,failedTCIDsSet);
 
 			ScreenRecorderUtility.stopRecord();
@@ -250,18 +249,6 @@ public class BaseTest {
 		return flag;
 	}
 	
-	/**
-	 * Clear File
-	 */
-	public static void clearFile() {
-		String  textFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\Execution Status.txt";
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(textFilePath))) {
-			// Clears the file content
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * Log Test Execution Status In Text File
 	 * @param passedTCIDsSet
