@@ -43,8 +43,7 @@ import screenRecorderUtilities.ScreenRecorderUtility.TypeOfScreen;
  * @author Niraj.Tiwari
  */
 @Listeners({RetryListerner.class, MultiThreadedReportingUtility.class})
-//@Listeners(MultiThreadedReportingUtility.class)
-public class BaseTest {
+public abstract class BaseTest {
 
 	public static final Logger logger = LogManager.getLogger(BaseTest.class);
 
@@ -86,8 +85,8 @@ public class BaseTest {
 		int thresholdDays = 10;
 		String testClassName = getClassName();
 		try {
-			ScreenRecorderUtility.startRecord(TypeOfScreen.RegularScreen,testClassName);
-			ScreenRecorderUtility.deleteOlderFilesAndDirectories(thresholdDays, TimeUnit.DAYS,".avi");			
+			ScreenRecorderUtility.deleteOlderFilesAndDirectories(thresholdDays, TimeUnit.DAYS,".avi");
+			ScreenRecorderUtility.startRecord(TypeOfScreen.RegularScreen,testClassName);			
 			logger.info("Screen Recording Started ..!!");
 		} catch (Exception e) {
 			e.printStackTrace();	
